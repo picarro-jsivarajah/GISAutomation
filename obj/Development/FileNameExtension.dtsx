@@ -1,0 +1,931 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/18/2016 11:36:01 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UDADI-850G2E"
+  DTS:CreatorName="CORP\udadi"
+  DTS:DTSID="{6F8C9335-7782-480A-80E8-76B0E956E2C7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FileNameExtension"
+  DTS:PackageType="5"
+  DTS:VersionBuild="53"
+  DTS:VersionGUID="{F6F1CF7F-72B3-4729-9D83-DDF60F1648CE}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BB7F1E0F-D959-444C-8282-AEA27CE40546}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="InputFeatures">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\assdf\GcarArea1_Mains_polyline.shp</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3806FDF0-A2AE-4CF6-B85F-87332602D268}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OutExtension">
+      <DTS:VariableValue
+        DTS:DataType="8">shp</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3D03F8AB-CBB5-4152-9AA1-F4D96FEAD112}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="OutFileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Filename Extension"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{C8A53DD0-2323-4496-9C8C-9C7DA3F97FED}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Filename Extension">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{E5F1C261-F612-431E-A54C-25CF2491CED8}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="DotIndex">
+          <DTS:VariableValue
+            DTS:DataType="3">3</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{0813E3C2-7B5E-4F2C-A801-EF74025B5216}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="FileExtension">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{534C98A8-C15C-4D92-AB60-CFDD00A301AC}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="FileNameWithExtension">
+          <DTS:VariableValue
+            DTS:DataType="8">test.shp</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{F8F46D4F-626D-4AB6-B04F-E110CFDCE388}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="FilePath">
+          <DTS:VariableValue
+            DTS:DataType="8">C:\assdf\test.shp</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{3B90E4F5-A42E-4D9D-B849-8EF6CFD2BEB5}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="LenFilePath">
+          <DTS:VariableValue
+            DTS:DataType="3">0</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\Assign File Path"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{A0500AB3-3258-4D88-9A1F-0211C78855FD}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Assign File Path"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::FilePath] =  @[User::InputFeatures]" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\Empty Extension"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{6CB716DA-AC7F-41F4-8307-C4F6070D6D4E}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Empty Extension"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::FileExtension] = &quot;&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\Extension"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{CCB84F84-9442-44C0-BB5E-D8F6CBBDE437}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Extension"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::OutExtension] =  LEN(@[User::FileExtension]) &gt; 0 ? @[User::FileExtension]  : &quot;&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\Extension Index"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{1C3DB962-A15F-46F2-819B-B6A79394C59B}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Extension Index"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::DotIndex] = FINDSTRING( @[User::FileNameWithExtension]  , &quot;.&quot;, 1 )" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\File Name"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{21E17072-0CB1-4A47-A984-3EF6816AF66C}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File Name"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::OutFileName] =  LEFT(@[User::FileNameWithExtension] ,  LEN(@[User::FileNameWithExtension] ) - LEN( @[User::FileExtension] ) )" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\File Name - Full Path"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{5A22F91E-1E1A-4B3C-B6C2-31E6784074B2}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File Name - Full Path"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::FileNameWithExtension] = RIGHT(  @[User::FilePath] , FINDSTRING( REVERSE( @[User::FilePath] ), &quot;\\&quot;, 1 ) - 1 )" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\File Name - Without Path"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{977CA884-BCA6-4A02-8267-13E5FEC4D876}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="File Name - Without Path"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::FileNameWithExtension] = @[User::FilePath]" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Filename Extension\Non Empty Extension"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{F8850036-5B0F-466D-ADF5-47F4B7738062}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Non Empty Extension"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::FileExtension] = RIGHT(@[User::FileNameWithExtension]  ,  LEN(@[User::FileNameWithExtension]) - @[User::DotIndex] + 1)" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4DEEE6A9-EE67-4B2A-AF67-308C155BA22C}"
+          DTS:EvalOp="1"
+          DTS:Expression="FINDSTRING( @[User::FilePath]  , &quot;\\&quot;, 1) &gt; 0"
+          DTS:From="Package\Filename Extension\Assign File Path"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Filename Extension\File Name - Full Path" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{B733F332-0028-4DAD-8180-F40238735664}"
+          DTS:EvalOp="1"
+          DTS:Expression="FINDSTRING( @[User::FilePath]  , &quot;\\&quot;, 1) &lt;= 0"
+          DTS:From="Package\Filename Extension\Assign File Path"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Filename Extension\File Name - Without Path" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{5006D81D-8A7C-46FD-AAB7-F9217106978A}"
+          DTS:From="Package\Filename Extension\File Name - Full Path"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Filename Extension\Extension Index" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{E13FC820-CB19-4887-8D66-43BCE76A17EF}"
+          DTS:From="Package\Filename Extension\File Name - Without Path"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Filename Extension\Extension Index" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{98E0F756-8EA8-4694-BF73-67E4DC83DD87}"
+          DTS:From="Package\Filename Extension\Non Empty Extension"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Filename Extension\File Name" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{DC3C8D15-817E-4F41-89AB-F5486346FC77}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::DotIndex] &gt; 0"
+          DTS:From="Package\Filename Extension\Extension Index"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\Filename Extension\Non Empty Extension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 6]"
+          DTS:CreationName=""
+          DTS:DTSID="{4DC59622-FB66-4DBE-85C3-C93B63C33EEB}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::DotIndex] &lt;= 0"
+          DTS:From="Package\Filename Extension\Extension Index"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 6"
+          DTS:To="Package\Filename Extension\Empty Extension" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 7]"
+          DTS:CreationName=""
+          DTS:DTSID="{023F7322-37E4-405D-B55B-517A45D3495C}"
+          DTS:From="Package\Filename Extension\Empty Extension"
+          DTS:ObjectName="Constraint 7"
+          DTS:To="Package\Filename Extension\File Name" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Filename Extension.PrecedenceConstraints[Constraint 9]"
+          DTS:CreationName=""
+          DTS:DTSID="{C301DA95-7984-4422-B7FA-DA39AE94B5F5}"
+          DTS:From="Package\Filename Extension\File Name"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 9"
+          DTS:To="Package\Filename Extension\Extension" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="153.6,43.2"
+          Id="Package\Filename Extension\Assign File Path"
+          TopLeft="145.828577140886,9.22353088748503" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\Filename Extension\Empty Extension"
+          TopLeft="249.714292010483,373.458826927" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Filename Extension\Extension"
+          TopLeft="160.571433349532,629.12941681819" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Filename Extension\Extension Index"
+          TopLeft="134.857147197334,280.658825030871" />
+        <NodeLayout
+          Size="126.4,41.6"
+          Id="Package\Filename Extension\File Name"
+          TopLeft="158.857147606052,548.094123841652" />
+        <NodeLayout
+          Size="177.6,41.6"
+          Id="Package\Filename Extension\File Name - Full Path"
+          TopLeft="8.34286193069099,155.388239077796" />
+        <NodeLayout
+          Size="198.4,41.6"
+          Id="Package\Filename Extension\File Name - Without Path"
+          TopLeft="229.828577549603,152.564708627879" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\Filename Extension\Non Empty Extension"
+          TopLeft="34.5142863565562,374.205048083929" />
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint]"
+          TopLeft="198.361910474219,52.423530887485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-101.219048543528,102.964708190311"
+              Start="0,0"
+              End="-101.219048543528,95.4647081903108">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.8227783783324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.8227783783324"
+                    Point2="0,41.8227783783324"
+                    Point3="-4,41.8227783783324" />
+                  <mssgle:LineSegment
+                    End="-97.219048543528,41.8227783783324" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-97.219048543528,41.8227783783324"
+                    Point2="-101.219048543528,41.8227783783324"
+                    Point3="-101.219048543528,45.8227783783324" />
+                  <mssgle:LineSegment
+                    End="-101.219048543528,95.4647081903108" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-58.609524271764,46.8227783783324,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 1]"
+          TopLeft="246.895243807552,52.423530887485">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.1333337420512,100.141177740394"
+              Start="0,0"
+              End="82.1333337420512,92.641177740394">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,36.6759010615621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,36.6759010615621"
+                    Point2="0,40.6759010615621"
+                    Point3="4,40.6759010615621" />
+                  <mssgle:LineSegment
+                    End="78.1333337420512,40.6759010615621" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.1333337420512,40.6759010615621"
+                    Point2="82.1333337420512,40.6759010615621"
+                    Point3="82.1333337420512,44.6759010615621" />
+                  <mssgle:LineSegment
+                    End="82.1333337420512,92.641177740394" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.0666668710256,45.6759010615621,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 2]"
+          TopLeft="97.142861930691,196.988239077796">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="90.7809519333099,83.6705859530756"
+              Start="0,0"
+              End="90.7809519333099,76.1705859530756">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.6900826782551" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.6900826782551"
+                    Point2="0,49.6900826782551"
+                    Point3="4,49.6900826782551" />
+                  <mssgle:LineSegment
+                    End="86.7809519333099,49.6900826782551" />
+                  <mssgle:CubicBezierSegment
+                    Point1="86.7809519333099,49.6900826782551"
+                    Point2="90.7809519333099,49.6900826782551"
+                    Point3="90.7809519333099,53.6900826782551" />
+                  <mssgle:LineSegment
+                    End="90.7809519333099,76.1705859530756" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 3]"
+          TopLeft="329.028577549603,194.164708627879">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-92.0380970189359,86.4941164029924"
+              Start="0,0"
+              End="-92.0380970189359,78.9941164029924">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.3669140270832" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,47.3669140270832"
+                    Point2="0,51.3669140270832"
+                    Point3="-4,51.3669140270832" />
+                  <mssgle:LineSegment
+                    End="-88.0380970189359,51.3669140270832" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-88.0380970189359,51.3669140270832"
+                    Point2="-92.0380970189359,51.3669140270832"
+                    Point3="-92.0380970189359,55.3669140270832" />
+                  <mssgle:LineSegment
+                    End="-92.0380970189359,78.9941164029924" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 5]"
+          TopLeft="187.923813864001,322.258825030871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-63.0095275074444,51.946223053058"
+              Start="0,0"
+              End="-63.0095275074444,44.446223053058">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.096527321548" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.096527321548"
+                    Point2="0,21.096527321548"
+                    Point3="-4,21.096527321548" />
+                  <mssgle:LineSegment
+                    End="-59.0095275074444,21.096527321548" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-59.0095275074444,21.096527321548"
+                    Point2="-63.0095275074444,21.096527321548"
+                    Point3="-63.0095275074444,25.096527321548" />
+                  <mssgle:LineSegment
+                    End="-63.0095275074444,44.446223053058" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-39.5047637537222,26.096527321548,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 6]"
+          TopLeft="236.990480530668,322.258825030871">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="91.9238114798151,51.2000018961288"
+              Start="0,0"
+              End="91.9238114798151,43.7000018961288">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.7934701578156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.7934701578156"
+                    Point2="0,20.7934701578156"
+                    Point3="4,20.7934701578156" />
+                  <mssgle:LineSegment
+                    End="87.9238114798151,20.7934701578156" />
+                  <mssgle:CubicBezierSegment
+                    Point1="87.9238114798151,20.7934701578156"
+                    Point2="91.9238114798151,20.7934701578156"
+                    Point3="91.9238114798151,24.7934701578156" />
+                  <mssgle:LineSegment
+                    End="91.9238114798151,43.7000018961288" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="37.9619057399075,25.7934701578156,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 7]"
+          TopLeft="328.914292010483,415.058826927">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87.1238110710976,133.035296914652"
+              Start="0,0"
+              End="-87.1238110710976,125.535296914652">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.8234134219312" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.8234134219312"
+                    Point2="0,78.8234134219312"
+                    Point3="-4,78.8234134219312" />
+                  <mssgle:LineSegment
+                    End="-83.1238110710976,78.8234134219312" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.1238110710976,78.8234134219312"
+                    Point2="-87.1238110710976,78.8234134219312"
+                    Point3="-87.1238110710976,82.8234134219312" />
+                  <mssgle:LineSegment
+                    End="-87.1238110710976,125.535296914652" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 9]"
+          TopLeft="222.914290477792,589.694123841652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.4352929765375"
+              Start="0,0"
+              End="0,31.9352929765375">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9352929765375" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Filename Extension.PrecedenceConstraints[Constraint 4]"
+          TopLeft="124.914286356556,415.805048083929">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="77.4095279161625,132.289075757723"
+              Start="0,0"
+              End="77.4095279161625,124.789075757723">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.3812773864509" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,74.3812773864509"
+                    Point2="0,78.3812773864509"
+                    Point3="4,78.3812773864509" />
+                  <mssgle:LineSegment
+                    End="73.4095279161625,78.3812773864509" />
+                  <mssgle:CubicBezierSegment
+                    Point1="73.4095279161625,78.3812773864509"
+                    Point2="77.4095279161625,78.3812773864509"
+                    Point3="77.4095279161625,82.3812773864509" />
+                  <mssgle:LineSegment
+                    End="77.4095279161625,124.789075757723" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="452.8,722.4"
+          Size="452.8,765.6"
+          Id="Package\Filename Extension"
+          TopLeft="119.918369389136,15.5563027391798" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

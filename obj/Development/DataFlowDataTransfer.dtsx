@@ -1,0 +1,1416 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/16/2015 9:19:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UDADI-850G2E"
+  DTS:CreatorName="CORP\udadi"
+  DTS:Description="These are component packages which go into the making of end-to-end automation packages. These components are still expected to be self contained and one should be able to run them by setting the parameters to appropriate values."
+  DTS:DTSID="{98998425-89C0-4567-9BDF-87F323864B45}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DataFlowDataTransfer"
+  DTS:PackageType="5"
+  DTS:VersionBuild="91"
+  DTS:VersionGUID="{1EA9448A-8A11-4314-BF07-034FD3D250CC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBConnection]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5EC8DAD5-D4C7-4BA2-8484-9D70986E5B82}"
+      DTS:ObjectName="DBConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Package::DBConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=TestDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DBDestinationConnection]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{4caece99-572c-418b-a5b2-050fa97b59af}"
+      DTS:ObjectName="DBDestinationConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Package::DBDestinationConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=TestDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{AEDFE3F4-6CAE-45B4-A08C-D99765F277FC}"
+      DTS:ObjectName="DBConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=.;Initial Catalog=TestDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{89795153-31AB-4CF5-958D-33A753322902}"
+      DTS:ObjectName="DBDestinationAssetTableName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">[dbo].[Asset]</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{66926D87-78F6-44A8-A4EB-8BDDA1278A54}"
+      DTS:ObjectName="DBDestinationBoundaryTableName">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">[dbo].[Boundary]</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{24F88C8B-E748-40F2-8FEA-8FA56E25C144}"
+      DTS:ObjectName="DBDestinationConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=.;Initial Catalog=TestDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables />
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Transfer Data"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{869FBF12-753F-47BF-A1D5-D11DB9B17392}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer Data">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Transfer Data\Create Spatial Indices"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{8AD453EC-E847-42CA-B783-1F1B807ADF47}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Create Spatial Indices"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4caece99-572c-418b-a5b2-050fa97b59af}"
+              SQLTask:SqlStatementSource="CREATE SPATIAL INDEX [IX_Shape] ON [dbo].[Asset]&#xA;(&#xA;  [Shape]&#xA;)USING  GEOMETRY_GRID &#xA;WITH (BOUNDING_BOX =(-180, -90, 180, 90), GRIDS =(LEVEL_1 = MEDIUM,LEVEL_2 = MEDIUM,LEVEL_3 = MEDIUM,LEVEL_4 = MEDIUM), &#xA;CELLS_PER_OBJECT = 16, PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]&#xA;&#xA;CREATE SPATIAL INDEX [IX_Shape] ON [dbo].[Boundary]&#xA;(&#xA;  [Shape]&#xA;)USING  GEOMETRY_GRID &#xA;WITH (BOUNDING_BOX =(-180, -90, 180, 90), GRIDS =(LEVEL_1 = MEDIUM,LEVEL_2 = MEDIUM,LEVEL_3 = MEDIUM,LEVEL_4 = MEDIUM), &#xA;CELLS_PER_OBJECT = 16, PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transfer Data\Drop Spatial Indices"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C38A94E6-5E82-475D-B91C-D290053F8AF4}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Drop Spatial Indices"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{4caece99-572c-418b-a5b2-050fa97b59af}"
+              SQLTask:SqlStatementSource="DROP INDEX [IX_Shape] ON [dbo].[Asset]&#xA;&#xA;DROP INDEX [IX_Shape] ON [dbo].[Boundary]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Transfer Data\Transfer Data"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{E4539FE9-D869-407E-823A-F405779349D7}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Transfer Data"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Asset Table DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Asset]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">$Package::DBDestinationAssetTableName</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">4</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBDestinationConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBDestinationConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[ExternalId]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ExternalId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                          cachedDataType="guid"
+                          cachedName="CustomerId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[AssetTypeId]"
+                          cachedDataType="guid"
+                          cachedName="AssetTypeId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AssetTypeId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[AssetTypeId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerMaterialTypeId]"
+                          cachedDataType="guid"
+                          cachedName="CustomerMaterialTypeId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerMaterialTypeId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerMaterialTypeId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Description]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[Shape]"
+                          cachedDataType="image"
+                          cachedName="Shape"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shape]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[Date]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="Date"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Date]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="guid"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          name="ExternalId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                          dataType="guid"
+                          name="CustomerId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AssetTypeId]"
+                          dataType="guid"
+                          name="AssetTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerMaterialTypeId]"
+                          dataType="guid"
+                          name="CustomerMaterialTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shape]"
+                          dataType="image"
+                          name="Shape" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          dataType="wstr"
+                          length="2"
+                          name="State" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transfer Data\Transfer Data\Asset Table DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Asset Table DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Asset]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP 1000 [Id]
+      ,[ExternalId]
+      ,[CustomerId]
+      ,[AssetTypeId]
+      ,[CustomerMaterialTypeId]
+      ,[Description]
+      ,[Shape]
+      ,[Date]
+      ,[State]
+  FROM [PGE_12_01_2015].[dbo].[Asset]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalId]"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]"
+                          name="ExternalId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                          name="CustomerId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[AssetTypeId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[AssetTypeId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[AssetTypeId]"
+                          name="AssetTypeId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerMaterialTypeId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerMaterialTypeId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerMaterialTypeId]"
+                          name="CustomerMaterialTypeId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Description]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Description]"
+                          name="Description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]"
+                          dataType="image"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shape]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]"
+                          name="Shape"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[Date]"
+                          name="Date"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="2"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          name="ExternalId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                          dataType="guid"
+                          name="CustomerId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[AssetTypeId]"
+                          dataType="guid"
+                          name="AssetTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerMaterialTypeId]"
+                          dataType="guid"
+                          name="CustomerMaterialTypeId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shape]"
+                          dataType="image"
+                          name="Shape" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Date]"
+                          dataType="dbTimeStamp"
+                          name="Date" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          dataType="wstr"
+                          length="2"
+                          name="State" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalId]"
+                          name="ExternalId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                          name="CustomerId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[AssetTypeId]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[AssetTypeId]"
+                          name="AssetTypeId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerMaterialTypeId]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerMaterialTypeId]"
+                          name="CustomerMaterialTypeId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          name="Description" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Shape]"
+                          dataType="image"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Shape]"
+                          name="Shape" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[Date]"
+                          name="Date" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Boundary Table DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Boundary]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable">$Package::DBDestinationBoundaryTableName</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">4</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBDestinationConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBDestinationConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[Id]"
+                          cachedDataType="guid"
+                          cachedName="Id"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Id]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[ExternalId]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="ExternalId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerId]"
+                          cachedDataType="guid"
+                          cachedName="CustomerId"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[Description]"
+                          cachedDataType="wstr"
+                          cachedLength="256"
+                          cachedName="Description"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Description]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[Shape]"
+                          cachedDataType="image"
+                          cachedName="Shape"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shape]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedDataType="wstr"
+                          cachedLength="2"
+                          cachedName="State"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[CustomerBoundaryTypeID]"
+                          cachedDataType="guid"
+                          cachedName="CustomerBoundaryTypeID"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerBoundaryTypeID]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerBoundaryTypeID]" />
+                        <inputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].Columns[Level]"
+                          cachedDataType="i4"
+                          cachedName="Level"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Level]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Level]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          name="ExternalId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerId]"
+                          dataType="guid"
+                          name="CustomerId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Shape]"
+                          dataType="image"
+                          name="Shape" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          dataType="wstr"
+                          length="2"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CustomerBoundaryTypeID]"
+                          dataType="guid"
+                          name="CustomerBoundaryTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Level]"
+                          dataType="i4"
+                          name="Level" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Boundary Table DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Boundary]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT TOP 1000 [Id]
+      ,[ExternalId]
+      ,[CustomerId]
+      ,[AssetTypeId]
+      ,[CustomerMaterialTypeId]
+      ,[Description]
+      ,[Shape]
+      ,[Date]
+      ,[State]
+  FROM [PGE_12_01_2015].[dbo].[Asset]</property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[DBConnection]"
+                      connectionManagerRefId="Package.ConnectionManagers[DBConnection]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Id]"
+                          name="Id"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalId]"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[ExternalId]"
+                          name="ExternalId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerId]"
+                          name="CustomerId"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Description]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Description]"
+                          name="Description"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]"
+                          dataType="image"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shape]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Shape]"
+                          name="Shape"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="2"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerBoundaryTypeID]"
+                          dataType="guid"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerBoundaryTypeID]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[CustomerBoundaryTypeID]"
+                          name="CustomerBoundaryTypeID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Level]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level]"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].Columns[Level]"
+                          name="Level"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Id]"
+                          dataType="guid"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          name="ExternalId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerId]"
+                          dataType="guid"
+                          name="CustomerId" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          name="Description" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Shape]"
+                          dataType="image"
+                          name="Shape" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          dataType="wstr"
+                          length="2"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerBoundaryTypeID]"
+                          dataType="guid"
+                          name="CustomerBoundaryTypeID" />
+                        <externalMetadataColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output].ExternalColumns[Level]"
+                          dataType="i4"
+                          name="Level" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Id]"
+                          name="Id" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalId]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ExternalId]"
+                          name="ExternalId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerId]"
+                          name="CustomerId" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerBoundaryTypeID]"
+                          dataType="guid"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[CustomerBoundaryTypeID]"
+                          name="CustomerBoundaryTypeID" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          dataType="wstr"
+                          length="256"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Description]"
+                          name="Description" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Level]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Level]"
+                          name="Level" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Shape]"
+                          dataType="image"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[Shape]"
+                          name="Shape" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          dataType="wstr"
+                          length="2"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Transfer Data\Transfer Data.Paths[OLE DB Source Output]"
+                  endId="Package\Transfer Data\Transfer Data\Asset Table DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transfer Data\Transfer Data\Asset Table DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Transfer Data\Transfer Data.Paths[OLE DB Source Output1]"
+                  endId="Package\Transfer Data\Transfer Data\Boundary Table DB Destination.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Transfer Data\Transfer Data\Boundary Table DB Source.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transfer Data.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{63C072B1-F567-49FE-A84F-75A9C7FA2F04}"
+          DTS:From="Package\Transfer Data\Drop Spatial Indices"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Transfer Data\Transfer Data" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Transfer Data.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{77413C88-288A-4DF9-83B0-C1923DFBB0D0}"
+          DTS:From="Package\Transfer Data\Transfer Data"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Transfer Data\Create Spatial Indices" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="182.4,41.6"
+          Id="Package\Transfer Data\Create Spatial Indices"
+          TopLeft="37.3714355293588,196.847062650106" />
+        <NodeLayout
+          Size="174.4,41.6"
+          Id="Package\Transfer Data\Drop Spatial Indices"
+          TopLeft="45.3714356655979,9.03529531023493" />
+        <NodeLayout
+          Size="145.6,41.6"
+          Id="Package\Transfer Data\Transfer Data"
+          TopLeft="54.8714357337176,97.7352964770836" />
+        <EdgeLayout
+          Id="Package\Transfer Data.PrecedenceConstraints[Constraint]"
+          TopLeft="130.121435699658,50.635295310235">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47.1000011668486"
+              Start="0,0"
+              End="0,39.6000011668486">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.6000011668486" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Data.PrecedenceConstraints[Constraint 1]"
+          TopLeft="128.121435631538,139.335296477084">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.5117661730228"
+              Start="0,0"
+              End="0,50.0117661730228">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.0117661730228" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="254.4,293.6"
+          Size="254.4,336.8"
+          Id="Package\Transfer Data"
+          TopLeft="32.0000005449568,11.6235295747803" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Transfer Data\Transfer Data">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Transfer Data\Transfer Data\Boundary Table DB Source"
+          TopLeft="251.885718275577,20.8000002917121" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Transfer Data\Transfer Data\Asset Table DB Source"
+          TopLeft="13.7142875827088,16.5176472904773" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Transfer Data\Transfer Data\Boundary Table DB Destination"
+          TopLeft="246.742861045137,160.894119903538" />
+        <NodeLayout
+          Size="208,41.6"
+          Id="Package\Transfer Data\Transfer Data\Asset Table DB Destination"
+          TopLeft="7.42857318994946,156.611766902303" />
+        <EdgeLayout
+          Id="Package\Transfer Data\Transfer Data.Paths[OLE DB Source Output1]"
+          TopLeft="357.714289660357,62.4000002917121">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,98.4941196118258"
+              Start="0,0"
+              End="0,90.9941196118258">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.9941196118258" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer Data\Transfer Data.Paths[OLE DB Source Output]"
+          TopLeft="109.371430386329,58.1176472904773">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,98.494119611826"
+              Start="0,0"
+              End="0,90.994119611826">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,90.994119611826" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Data\Transfer Data\Boundary Table DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Data\Transfer Data\Asset Table DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Data\Transfer Data\Boundary Table DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer Data\Transfer Data\Asset Table DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

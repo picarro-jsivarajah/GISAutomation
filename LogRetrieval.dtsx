@@ -1,0 +1,923 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/5/2015 9:19:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UDADI-850G2E"
+  DTS:CreatorName="CORP\udadi"
+  DTS:DTSID="{6E749B59-03CD-47DE-B8AC-CE7834DAFFC3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="12.0.2430.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LogRetrieval"
+  DTS:PackageType="5"
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{64860721-063D-46C8-88EB-E51BCB6ABD41}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LogDBConnection]"
+      DTS:CreationName="OLEDB"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{5EC8DAD5-D4C7-4BA2-8484-9D70986E5B82}"
+      DTS:ObjectName="LogDBConnection">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Package::LogDBConnectionString]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=SSISLogs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{11BD430B-7066-42B4-BA43-27E6FAD1AB92}"
+      DTS:ObjectName="LogDBConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=.;Initial Catalog=SSISLogs;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{077896EF-2122-46FF-B368-61A6B0E6EA38}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LgMsg">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FF94E998-CFE9-4566-8A0F-71BF52C8C0BA}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="LgTyp">
+      <DTS:VariableValue
+        DTS:DataType="8">info</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostExecute"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnProgress"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DB Log Retrieval"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Retrieval Log statements from DB and format into a string"
+      DTS:DTSID="{9F0E701D-0743-4518-A616-C713D8EA178F}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DB Log Retrieval">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{6BED1142-BF24-431B-9CE5-0270C97467D5}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="LogMessage">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{1213D5ED-C5E2-4F44-98A6-AF7F66F3C5BC}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="User"
+          DTS:ObjectName="LogRows">
+          <DTS:VariableValue
+            DTS:DataSubType="ManagedSerializable"
+            DTS:DataType="13">
+            <SOAP-ENV:Envelope xmlns:clr="http://schemas.microsoft.com/soap/encoding/clr/1.0" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+              <SOAP-ENV:Body>
+                <xsd:anyType
+                  id="ref-1"></xsd:anyType>
+              </SOAP-ENV:Body>
+            </SOAP-ENV:Envelope>
+          </DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{D321BCED-5278-4F55-8F24-63CFC416E325}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="LogSql">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:DTSID="{25C23B09-A5BD-43EA-A978-DD7CA25320B9}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="LogType">
+          <DTS:VariableValue
+            DTS:DataType="8"
+            xml:space="preserve"></DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:LoggingOptions
+        DTS:FilterKind="0"
+        DTS:LoggingMode="1">
+        <DTS:Property
+          DTS:DataType="8"
+          DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+        <DTS:Property
+          DTS:EventName="OnError"
+          DTS:Name="ColumnFilter">
+          <DTS:Property
+            DTS:Name="Computer">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="Operator">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceName">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="SourceID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="ExecutionID">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="MessageText">-1</DTS:Property>
+          <DTS:Property
+            DTS:Name="DataBytes">-1</DTS:Property>
+        </DTS:Property>
+      </DTS:LoggingOptions>
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Build Error Log SQL"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Build SQL to retrieve log messages when a task or package failed with an error"
+          DTS:DTSID="{CAD4B065-91D0-4C91-8EEF-FC3A3E2B92DB}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Build Error Log SQL"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LogSql] = &quot;SELECT source, event, message, starttime FROM dbo.sysssislog WHERE message is not null AND LEN(RTRIM(LTRIM(message))) != 0 AND starttime &gt;= (SELECT max(starttime) FROM dbo.sysssislog WHERE message like 'Beginning of package execution%' AND source = '&quot;+ @[System::PackageName]  + &quot;')  ORDER BY starttime&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Build Info Log SQL"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Build SQL to retrieve log messages when a task or package succeeded"
+          DTS:DTSID="{2A3F6BA8-0403-4687-9245-6B21F807EEB9}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Build Info Log SQL"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LogSql] = &quot;SELECT source, event, message, starttime FROM dbo.sysssislog WHERE (source='&quot;+ @[System::PackageName]  + &quot;' OR event='User:ScriptTaskLogEntry')  AND message is not null  AND LEN(RTRIM(LTRIM(message))) != 0 AND starttime &gt;= (SELECT max(starttime) FROM dbo.sysssislog WHERE message like 'Beginning of package execution%' AND source = '&quot;+ @[System::PackageName]  + &quot;')  ORDER BY starttime&quot;" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Fetch Log Table Rows"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Fetch rows from log table"
+          DTS:DTSID="{98239F07-081E-477D-8CAC-3568BF2BA297}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Fetch Log Table Rows"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{5EC8DAD5-D4C7-4BA2-8484-9D70986E5B82}"
+              SQLTask:SqlStmtSourceType="Variable"
+              SQLTask:SqlStatementSource="User::LogSql"
+              SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+              <SQLTask:ResultBinding
+                SQLTask:ResultName="0"
+                SQLTask:DtsVariableName="User::LogRows" />
+            </SQLTask:SqlTaskData>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Format Log Rows"
+          DTS:CreationName="STOCK:FOREACHLOOP"
+          DTS:Description="Format each log row retrieved from the log table"
+          DTS:DTSID="{B06E3486-3992-470D-B4FE-2390D9E5DCF4}"
+          DTS:ExecutableType="STOCK:FOREACHLOOP"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Format Log Rows">
+          <DTS:ForEachEnumerator
+            DTS:CreationName="Microsoft.ForEachADOEnumerator"
+            DTS:DTSID="{6619D95C-A254-42A9-A464-E79E30B53F9F}"
+            DTS:ObjectName="{6619D95C-A254-42A9-A464-E79E30B53F9F}">
+            <DTS:ObjectData>
+              <FEEADO
+                EnumType="EnumerateRowsInFirstTable"
+                VarName="User::LogRows" />
+            </DTS:ObjectData>
+          </DTS:ForEachEnumerator>
+          <DTS:Variables>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{8168F645-0460-4387-845C-5CD45AC2FAA6}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="event">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{B73D4B5F-3C41-4BBC-A414-231195948BE8}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="id">
+              <DTS:VariableValue
+                DTS:DataType="3">0</DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{DD4F6E6B-E58A-4D9A-85D5-F67936D389B6}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="message">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{5BAA1350-6864-49A6-9032-66E8CC8E2E4E}"
+              DTS:IncludeInDebugDump="2345"
+              DTS:Namespace="User"
+              DTS:ObjectName="source">
+              <DTS:VariableValue
+                DTS:DataType="8"
+                xml:space="preserve"></DTS:VariableValue>
+            </DTS:Variable>
+            <DTS:Variable
+              DTS:CreationName=""
+              DTS:DTSID="{9C11C693-CCDA-4865-B777-02EBFFE0AB8E}"
+              DTS:IncludeInDebugDump="6789"
+              DTS:Namespace="User"
+              DTS:ObjectName="starttime">
+              <DTS:VariableValue
+                DTS:DataType="7">1/1/2015</DTS:VariableValue>
+            </DTS:Variable>
+          </DTS:Variables>
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\DB Log Retrieval\Format Log Rows\Format Single Row"
+              DTS:CreationName="Microsoft.ExpressionTask"
+              DTS:Description="Format a single row retrieved from the log table"
+              DTS:DTSID="{5B8076BC-435E-4197-A019-6964E86DEBD2}"
+              DTS:ExecutableType="Microsoft.ExpressionTask"
+              DTS:FailPackageOnFailure="True"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Format Single Row"
+              DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="2">
+              <DTS:Variables />
+              <DTS:LoggingOptions
+                DTS:FilterKind="0"
+                DTS:LoggingMode="1">
+                <DTS:Property
+                  DTS:DataType="8"
+                  DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+                <DTS:Property
+                  DTS:EventName="OnError"
+                  DTS:Name="ColumnFilter">
+                  <DTS:Property
+                    DTS:Name="Computer">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="Operator">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="SourceName">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="SourceID">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="ExecutionID">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="MessageText">-1</DTS:Property>
+                  <DTS:Property
+                    DTS:Name="DataBytes">-1</DTS:Property>
+                </DTS:Property>
+              </DTS:LoggingOptions>
+              <DTS:ObjectData>
+                <ExpressionTask
+                  Expression="@[User::LogMessage] = @[User::LogMessage] + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;dd&quot; , @[User::starttime] ), 2) + &quot;-&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;mm&quot; , @[User::starttime]), 2) + &quot;-&quot; +  (DT_STR, 4, 1252) DATEPART(&quot;yy&quot; , @[User::starttime])&#xA; + &quot; &quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;Hh&quot; , @[User::starttime]), 2) +&quot;:&quot;+ RIGHT(&quot;0&quot; +  (DT_STR, 2, 1252) DATEPART(&quot;mi&quot; , @[User::starttime]), 2) + &quot;:&quot; + RIGHT(&quot;0&quot; + (DT_STR, 2, 1252) DATEPART(&quot;ss&quot; , @[User::starttime]), 2) + &quot; [&quot; + @[User::source] + &quot;] &quot; + @[User::message]" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:ForEachVariableMappings>
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{932BCBAD-9BFD-4E87-9482-85573308E995}"
+              DTS:ObjectName="{932BCBAD-9BFD-4E87-9482-85573308E995}"
+              DTS:ValueIndex="0"
+              DTS:VariableName="User::source" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{4D6DABD6-8A8F-4DE6-9184-A4118C4E34F6}"
+              DTS:ObjectName="{4D6DABD6-8A8F-4DE6-9184-A4118C4E34F6}"
+              DTS:ValueIndex="1"
+              DTS:VariableName="User::event" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{3BDC7432-D53A-4769-BC99-EFFD40BE4AFF}"
+              DTS:ObjectName="{3BDC7432-D53A-4769-BC99-EFFD40BE4AFF}"
+              DTS:ValueIndex="2"
+              DTS:VariableName="User::message" />
+            <DTS:ForEachVariableMapping
+              DTS:CreationName=""
+              DTS:DTSID="{7311E62B-3FD0-4CE5-A71C-45776E7B4EFC}"
+              DTS:ObjectName="{7311E62B-3FD0-4CE5-A71C-45776E7B4EFC}"
+              DTS:ValueIndex="3"
+              DTS:VariableName="User::starttime" />
+          </DTS:ForEachVariableMappings>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Set Log String"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Set formatted log string"
+          DTS:DTSID="{7BF2F010-2DD8-403B-AD59-19E9CCDA1DAD}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set Log String"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LgMsg] =  @[User::LogMessage]" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DB Log Retrieval\Set Log Type"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Set Log Type"
+          DTS:DTSID="{314FD222-3F12-4F65-B3D5-493DB77E3295}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:FailPackageOnFailure="True"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Set Log Type"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2014; © 2014 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:LoggingOptions
+            DTS:FilterKind="0"
+            DTS:LoggingMode="1">
+            <DTS:Property
+              DTS:DataType="8"
+              DTS:Name="EventFilter">1,7,OnError</DTS:Property>
+            <DTS:Property
+              DTS:EventName="OnError"
+              DTS:Name="ColumnFilter">
+              <DTS:Property
+                DTS:Name="Computer">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="Operator">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceName">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="SourceID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="ExecutionID">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="MessageText">-1</DTS:Property>
+              <DTS:Property
+                DTS:Name="DataBytes">-1</DTS:Property>
+            </DTS:Property>
+          </DTS:LoggingOptions>
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::LogType]= @[User::LgTyp]" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{4726CDEE-CC72-464C-83FD-D64EF34C4C9A}"
+          DTS:From="Package\DB Log Retrieval\Build Info Log SQL"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DB Log Retrieval\Fetch Log Table Rows" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{183C54CC-46D5-4326-97D5-D7BAB88E9556}"
+          DTS:From="Package\DB Log Retrieval\Fetch Log Table Rows"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DB Log Retrieval\Format Log Rows" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{455DA668-5AAD-428E-99A1-79DFF0799965}"
+          DTS:From="Package\DB Log Retrieval\Build Error Log SQL"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\DB Log Retrieval\Fetch Log Table Rows" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{0077E511-9DF9-4409-BFC5-735A6506DE28}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::LogType] == &quot;error&quot;"
+          DTS:From="Package\DB Log Retrieval\Set Log Type"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\DB Log Retrieval\Build Error Log SQL" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{7884C1F3-A190-47F5-AC8D-68A163C8454C}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::LogType] == &quot;info&quot;"
+          DTS:From="Package\DB Log Retrieval\Set Log Type"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\DB Log Retrieval\Build Info Log SQL" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 5]"
+          DTS:CreationName=""
+          DTS:DTSID="{68C03A03-77CC-4C36-9E9D-C010CFF1596F}"
+          DTS:From="Package\DB Log Retrieval\Format Log Rows"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 5"
+          DTS:To="Package\DB Log Retrieval\Set Log String" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="sql12">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="172.8,41.6"
+          Id="Package\DB Log Retrieval\Build Error Log SQL"
+          TopLeft="10.0571452218659,89.458826343576" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DB Log Retrieval\Build Info Log SQL"
+          TopLeft="217.942862543768,91.2941204869624" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\DB Log Retrieval\Fetch Log Table Rows"
+          TopLeft="104.228573462428,180.800002625409" />
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\DB Log Retrieval\Format Log Rows\Format Single Row"
+          TopLeft="22.6285759147333,9.27059047461387" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="208,56"
+          Size="208,99.2"
+          Id="Package\DB Log Retrieval\Format Log Rows"
+          TopLeft="97.1809542947885,260.43911522004" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\DB Log Retrieval\Set Log String"
+          TopLeft="114.171432259618,389.929416526478" />
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\DB Log Retrieval\Set Log Type"
+          TopLeft="119.200004223415,7.0117663188789" />
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint]"
+          TopLeft="301.942862543768,132.894120486962">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-68.91428908134,47.9058821384466"
+              Start="0,0"
+              End="-68.91428908134,40.4058821384466">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5098420531243" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5098420531243"
+                    Point2="0,28.5098420531243"
+                    Point3="-4,28.5098420531243" />
+                  <mssgle:LineSegment
+                    End="-64.91428908134,28.5098420531243" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-64.91428908134,28.5098420531243"
+                    Point2="-68.91428908134,28.5098420531243"
+                    Point3="-68.91428908134,32.5098420531243" />
+                  <mssgle:LineSegment
+                    End="-68.91428908134,40.4058821384466" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 1]"
+          TopLeft="201.504763878608,222.400002625409">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.0391125946311"
+              Start="0,0"
+              End="0,30.5391125946311">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.5391125946311" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 2]"
+          TopLeft="96.4571452218659,131.058826343576">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.1714282405621,49.741176281833"
+              Start="0,0"
+              End="74.1714282405621,42.241176281833">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.6020658847982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.6020658847982"
+                    Point2="0,29.6020658847982"
+                    Point3="4,29.6020658847982" />
+                  <mssgle:LineSegment
+                    End="70.1714282405621,29.6020658847982" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.1714282405621,29.6020658847982"
+                    Point2="74.1714282405621,29.6020658847982"
+                    Point3="74.1714282405621,33.6020658847982" />
+                  <mssgle:LineSegment
+                    End="74.1714282405621,42.241176281833" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 3]"
+          TopLeft="168.000004223415,48.6117663188789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.5428590015492,40.8470600246971"
+              Start="0,0"
+              End="-71.5428590015492,33.3470600246971">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6111377433768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6111377433768"
+                    Point2="0,16.6111377433768"
+                    Point3="-4,16.6111377433768" />
+                  <mssgle:LineSegment
+                    End="-67.5428590015492,16.6111377433768" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.5428590015492,16.6111377433768"
+                    Point2="-71.5428590015492,16.6111377433768"
+                    Point3="-71.5428590015492,20.6111377433768" />
+                  <mssgle:LineSegment
+                    End="-71.5428590015492,33.3470600246971" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-43.7714295007746,21.6111377433768,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 4]"
+          TopLeft="212.800004223415,48.6117663188789">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.1428583203529,42.6823541680835"
+              Start="0,0"
+              End="89.1428583203529,35.1823541680835">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.3574906950206" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.3574906950206"
+                    Point2="0,17.3574906950206"
+                    Point3="4,17.3574906950206" />
+                  <mssgle:LineSegment
+                    End="85.1428583203529,17.3574906950206" />
+                  <mssgle:CubicBezierSegment
+                    Point1="85.1428583203529,17.3574906950206"
+                    Point2="89.1428583203529,17.3574906950206"
+                    Point3="89.1428583203529,21.3574906950206" />
+                  <mssgle:LineSegment
+                    End="89.1428583203529,35.1823541680835" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="36.5714291601765,22.3574906950206,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DB Log Retrieval.PrecedenceConstraints[Constraint 5]"
+          TopLeft="198.876193277203,359.63911522004">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.2903013064379"
+              Start="0,0"
+              End="0,22.7903013064379">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7903013064379" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="395.2,486.4"
+          Size="395.2,529.6"
+          Id="Package\DB Log Retrieval"
+          TopLeft="92.7428585587716,19.552940048231" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
